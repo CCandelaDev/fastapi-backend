@@ -17,7 +17,8 @@ router = APIRouter(tags=["jwt Authentication"])
 oauth2 = OAuth2PasswordBearer(tokenUrl="login")
 
 # Encriptamos la contraseña con passlib (contexto de encriptación)
-cript = CryptContext(schemes=["bcrypt"], deprecated="auto")
+# cript = CryptContext(schemes=["bcrypt"], deprecated="auto")
+cript = CryptContext(schemes=["argon2"], deprecated="auto")
 
 
 class User(BaseModel):
@@ -52,7 +53,7 @@ users_db = {
         "full_name": "Bob Wonderson",
         "email": "XOx6M@example.com",
         "disabled": True,
-        "password": cript.hash("12345678"[:72]),
+        "password": cript.hash("12345678"),
     },
 }
 
