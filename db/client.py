@@ -1,4 +1,5 @@
 from pymongo import MongoClient
+import os
 
 ### MongoDB client ###
 
@@ -12,9 +13,9 @@ from pymongo import MongoClient
 # db_client = MongoClient().local
 
 # Base de datos remota
-db_client = MongoClient(
-    "mongodb+srv://test:test@cluster0.wivvqyh.mongodb.net/?appName=Cluster0"
-).test
+MONGO_URI = os.getenv("MONGO_URI")
+
+db_client = MongoClient("MONGO_URI").test
 
 
 # Base de datos remota MongoDB Atlas (https://mongodb.com)
